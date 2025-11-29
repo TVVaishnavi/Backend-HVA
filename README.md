@@ -36,7 +36,7 @@ A full-stack Task Management application built using  **React** ,  **Node.js** ,
 * Context-based authentication handler
 * Axios for API calls
 * Role-based UI rendering
-* Modern styled UI using CSS (SlateBlue `#6a5acd` theme)
+* Modern styled UI using CSS 
 
 ---
 

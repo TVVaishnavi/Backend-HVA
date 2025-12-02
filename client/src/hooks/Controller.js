@@ -106,6 +106,6 @@ const Controller = ({ children }) => {
     )
 }
 
-export const authList = () => React.useContext(list);
+export const useAuthList = () => React.useContext(list);
 
 export default Controller

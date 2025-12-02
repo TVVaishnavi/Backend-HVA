@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authList } from '../hooks/Controller';
+import { useAuthList } from '../hooks/Controller';
 import '../style/Register.css';
 
 function Register() {
@@ -11,12 +11,12 @@ function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
-    const { signup } = authList();
+    const { signup } = useAuthList();
 
     const handleSubmit = async () => {
         if (emailIndicator) {
             if (password === confirmPassword) {
-                const data = { name:userName, email, password };
+                const data = { name: userName, email, password };
                 await signup(data);
             } else {
                 setIndicator(true);

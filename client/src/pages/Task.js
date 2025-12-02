@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { authList } from '../hooks/Controller';
+import { useAuthList } from '../hooks/Controller';
 import '../style/Task.css';
 
 function Task() {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { fetchTask } = authList();
+    const { fetchTask } = useAuthList();
 
     const role = (localStorage.getItem("role") || "").toLowerCase();
 

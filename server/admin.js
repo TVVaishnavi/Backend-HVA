@@ -1,20 +1,36 @@
-const bcrypt = require('bcrypt');
 const User = require('./model/user');
+const bcrypt = require('bcrypt');
 
-const createAdminAccount = async() => {
-  const adminEmail = process.env.ADMIN_EMAIL;
-  const adminPassword = process.env.ADMIN_PASSWORD;
+const createAdminAccount = async () => {
+  try {
+    const adminEmail = process.env.ADMIN_EMAIL;
+    const adminPassword = process.env.ADMIN_PASSWORD;
 
-  const hashedPassword = await bcrypt.hash(adminPassword, 10);
+    if (!adminEmail || !adminPassword) {
+      console.log("Admin credentials not provided.");
+      return;
+    }
+    const existingAdmin = await User.findOne({ email: adminEmail });
 
-  const newAdmin = new User({
-    name: 'Admin',
-    email: adminEmail,
-    password: hashedPassword,
-    role: 'admin',
-  });
+    if (existingAdmin) {
+      console.log("Admin already exists. Skipping admin creation.");
+      return;
+    }
 
-  await newAdmin.save();
+    const hashedPassword = await bcrypt.hash(adminPassword, 10);
+
+    const adminUser = new User({
+      name: "Admin",
+      email: adminEmail,
+      password: hashedPassword,
+      role: "admin",
+    });
+
+    await adminUser.save();
+    console.log("Admin created successfully.");
+  } catch (error) {
+    console.error("Error creating admin =", error);
+  }
 };
 
 module.exports = createAdminAccount;

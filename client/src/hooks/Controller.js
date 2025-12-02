@@ -17,13 +17,13 @@ const Controller = ({ children }) => {
             console.log("Signup data: ", data);
             const response = await api.post('/user/register', data);
 
-            if (response.status === 201) {
-                console.log("Registration successful");
-                navigate('/login');
+            if (response.status >= 200 && response.status < 300) {
+            console.log("Registration successful");
+            navigate('/login');
             } else {
                 console.log(response.data.message || "Signup failed");
             }
-
+            
         } catch (error) {
             console.error("Error during signup: ", error);
         }

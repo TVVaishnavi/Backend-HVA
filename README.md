@@ -4,16 +4,16 @@ A full-stack Task Management application built using  **React** ,  **Node.js** ,
 
 ---
 
-## 🚀 Features
+##  Features
 
-### 🔐 Authentication
+###  Authentication
 
 * User Registration (Name, Email, Password)
 * Login with JWT
 * Admin & User roles
 * Password hashing with bcrypt
 
-### 🗂 Task Management
+###  Task Management
 
 * **Admin** can view all tasks
 * **Users** can view only their assigned tasks
@@ -22,7 +22,7 @@ A full-stack Task Management application built using  **React** ,  **Node.js** ,
   * Description
   * Assigned user's email
 
-### 📡 Backend Highlights
+###  Backend Highlights
 
 * Express REST API
 * MongoDB & Mongoose models
@@ -30,7 +30,7 @@ A full-stack Task Management application built using  **React** ,  **Node.js** ,
 * Task seeding support
 * Role-based authorization middleware
 
-### 💻 Frontend Highlights
+###  Frontend Highlights
 
 * React functional components
 * Context-based authentication handler
@@ -40,7 +40,7 @@ A full-stack Task Management application built using  **React** ,  **Node.js** ,
 
 ---
 
-## 🏗 Project Structure
+##  Project Structure
 
 ### Backend Structure
 
@@ -70,7 +70,7 @@ Frontend-HVA/
 
 ---
 
-## ⚙️ Setup Instructions
+##  Setup Instructions
 
 ### Backend Setup
 
@@ -115,12 +115,12 @@ Frontend runs at:
 
 ---
 
-## 🛡 Role Permissions
+##  Role Permissions
 
 ### Admin
 
 * View all tasks
-* View assigned email for each task
+* View the assigned email for each task
 
 ### User
 
@@ -128,7 +128,7 @@ Frontend runs at:
 
 ---
 
-## 🏁 Running the Full Project
+##  Running the Full Project
 
 1. Start backend:
 
@@ -147,11 +147,11 @@ Frontend runs at:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Feel free to create pull requests or report issues.
+You can create pull requests or report issues.
 
 ---
 
-## 📄 Author
+##  Author
 Vaishnavi T V

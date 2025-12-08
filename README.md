@@ -153,6 +153,5 @@ Feel free to create pull requests or report issues.
 
 ---
 
-## 📄 License
-
-MIT License © Vaishnavi TV
+## 📄 Author
+Vaishnavi T V

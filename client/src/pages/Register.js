@@ -20,6 +20,7 @@ function Register() {
                 await signup(data);
             } else {
                 setIndicator(true);
+                navigate("/login");
             }
         } else {
             setIndicator(true);

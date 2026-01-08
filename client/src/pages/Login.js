@@ -23,7 +23,7 @@ function Login({ setIsLoggedIn }) {
                 return;
             }
             localStorage.setItem('usertoken', tokenFromServer);
-            setIsLoggedIn(true);
+            setIsLoggedIn(True);
             navigate('/task');
         } catch (error) {
             console.error("Login error:", error);

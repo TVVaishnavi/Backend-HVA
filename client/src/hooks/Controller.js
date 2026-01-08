@@ -25,7 +25,10 @@ const Controller = ({ children }) => {
             }
             
         } catch (error) {
-            console.error("Error during signup: ", error);
+            console.error(
+            "Signup error:",
+             error.response?.data || error.message
+            );
         }
     };
 

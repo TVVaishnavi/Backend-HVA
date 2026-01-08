@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
+import '../style/Header.css';
 import { useNavigate } from "react-router-dom";
-import "../style/Header.css";
 
-function Header() {
+function Header({ isLoggedIn, setIsLoggedIn }) {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("usertoken");
-    setIsLoggedIn(!!token);
-  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("usertoken");
+    localStorage.removeItem("userDetail");
+    localStorage.removeItem("role");
     setIsLoggedIn(false);
     navigate("/login");
   };
 
   return (
-    <div className="header-container">
+    <div className='header-container'>
       <h1 onClick={() => navigate("/")}>Task Viewer</h1>
 
       {isLoggedIn && (

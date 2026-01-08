@@ -3,7 +3,7 @@ import { useAuthList } from '../hooks/Controller';
 import { useNavigate } from 'react-router-dom';
 import '../style/Login.css'
 
-function Login() {
+function Login({ setIsLoggedIn }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -23,6 +23,7 @@ function Login() {
                 return;
             }
             localStorage.setItem('usertoken', tokenFromServer);
+            setIsLoggedIn(true);
             navigate('/task');
         } catch (error) {
             console.error("Login error:", error);

@@ -1,9 +1,9 @@
 .header-container {
     width: 95%;
-    background: #9932cc;      
+    background: #9932cc;
     padding: 20px 40px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;   
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
@@ -13,4 +13,21 @@
     font-size: 28px;
     font-weight: 700;
     margin: 0;
+    cursor: pointer;
+}
+
+.header-container button {
+    background-color: white;
+    color: #9932cc;
+    border: 2px solid #9932cc;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.header-container button:hover {
+    background-color: #9932cc;
+    color: white;
 }

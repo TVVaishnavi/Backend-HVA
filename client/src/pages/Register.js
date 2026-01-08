@@ -14,13 +14,18 @@ function Register() {
     const { signup } = useAuthList();
 
     const handleSubmit = async () => {
+        if (!userName || !email || !password || !confirmPassword) {
+         setIndicator(true);
+         return;
+        }
+
         if (emailIndicator) {
             if (password === confirmPassword) {
                 const data = { name: userName, email, password };
                 await signup(data);
             } else {
                 setIndicator(true);
-                navigate("/task");
+                return;
             }
         } else {
             setIndicator(true);
@@ -28,12 +33,10 @@ function Register() {
     };
 
     const checkEmail = (email) => {
-        if (email.includes('@') || email === '') {
-            setEmailIndicator(true);
-        } else {
-            setEmailIndicator(false);
-        }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setEmailIndicator(emailRegex.test(email));
     };
+
 
     return (
         <div className="register-container">
@@ -41,7 +44,7 @@ function Register() {
                 <h2>Register</h2>
 
                 <div className="input-group">
-                    <label>User Name</label>
+                    <label>Name</label>
                     <input
                         type="text"
                         placeholder="Enter your name"

@@ -5,12 +5,20 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("usertoken");
-    localStorage.removeItem("userDetail");
-    localStorage.removeItem("role");
-    setIsLoggedIn(false);
+  const role = localStorage.getItem("role"); 
+
+  localStorage.removeItem("usertoken");
+  localStorage.removeItem("userDetail");
+  localStorage.removeItem("role");
+
+  setIsLoggedIn(false);
+
+  if (role === "admin") {
+    navigate("/adminlogin");
+  } else {
     navigate("/login");
-  };
+  }
+};
 
   return (
     <div className='header-container'>

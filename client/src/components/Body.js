@@ -13,7 +13,7 @@ function Body({ setIsLoggedIn }) {
                     <Route path='/' element={<Home />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-                    <Route path='/adminlogin' element={<AdminLogin />} />
+                    <Route path='/adminlogin' element={<AdminLogin setIsLoggedIn={setIsLoggedIn}/>} />
                     <Route path='/task' element={<Task />} /> 
             </Routes>
         </div>

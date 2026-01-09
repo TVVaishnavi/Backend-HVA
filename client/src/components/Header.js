@@ -22,7 +22,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
 
   return (
     <div className='header-container'>
-      <h1 onClick={() => navigate("/")}>Task Viewer</h1>
+      <h1>Task Viewer</h1>
 
       {isLoggedIn && (
         <button onClick={handleLogout}>

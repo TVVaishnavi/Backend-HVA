@@ -4,14 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import '../style/Login.css'
 
 function AdminLogin({setIsLoggedIn }) {
+    const [adminError, setAdminError] = useState("");
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const { login } = useAuthList();
 
     const handleLogin = async (user, passcode) => {
+        setAdminError("");
         if (user === '' || passcode === '') {
             alert("Please fill your details");
+            return;
+        }
+        if (!user.endsWith("@hyperverge.co")) {
+            setAdminError("You are not an admin");
             return;
         }
         try {
@@ -44,6 +50,11 @@ function AdminLogin({setIsLoggedIn }) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
+                    {adminError && (
+                      <p style={{ color: "red", fontSize: "14px", marginTop: "8px" }}>
+                        {adminError} </p>
+                     )}
+
                 </div>
 
                 <div className="input-group">

@@ -41,8 +41,9 @@ function Login({ setIsLoggedIn }) {
     return (
         <div className="login-container">
             <div className="login-card">
+                <div className="close-btn" onClick={() => navigate("/")}>X</div>
                 <h2>User Login</h2>
-
+                
                 <div className="input-group">
                     <label>Email</label>
                     <input

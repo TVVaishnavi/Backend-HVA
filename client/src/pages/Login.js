@@ -4,17 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import '../style/Login.css'
 
 function Login({ setIsLoggedIn }) {
+    const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
     const { login } = useAuthList();
 
     const handleLogin = async (user, passcode) => {
+        setErrorMsg("");
+        
         if (user === '' || passcode === '') {
             alert("Please fill your details");
             return;
         }
         try {
+            setLoading(true);
             const data = { email: user, password: passcode };
             const response = await login(data);
             const tokenFromServer = response.token;
@@ -28,6 +33,8 @@ function Login({ setIsLoggedIn }) {
         } catch (error) {
             console.error("Login error:", error);
             alert("Login failed");
+        }finally{
+            setLoading(false);
         }
     };
 
@@ -57,12 +64,13 @@ function Login({ setIsLoggedIn }) {
                 </div>
 
                 <button
-                    className="submit-btn"
-                    onClick={() => {console.log("button clicked");
-                        handleLogin(email, password)}}
+                  className="submit-btn"
+                  onClick={() => handleLogin(email, password)}
+                  disabled={loading}
                 >
-                    Submit
+                  {loading? "Logging in...": "Login"}
                 </button>
+
                 <p className="register-link" onClick={() => navigate('/register')}>
                    No Account? Create your Account
                 </p>

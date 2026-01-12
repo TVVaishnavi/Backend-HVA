@@ -10,28 +10,34 @@ function Register() {
     const [indicator, setIndicator] = useState(false);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { signup } = useAuthList();
     const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
     const handleSubmit = async () => {
-        if (!userName || !email || !password || !confirmPassword) {
-         setIndicator(true);
-         return;
-        }
+      if (!userName || !email || !password || !confirmPassword) {
+        setIndicator(true);
+        return;
+      }
 
-        if (emailIndicator) {
-            if (password === confirmPassword) {
-                const data = { name: userName, email, password };
-                await signup(data);
-            } else {
-                setIndicator(true);
-                return;
-            }
-        } else {
-            setIndicator(true);
-        }
-    };
+      if (password !== confirmPassword) {
+        setIndicator(true);
+        return;
+      }
+
+      try {
+       setLoading(true);
+       const data = { name: userName, email, password };
+       await signup(data);
+       navigate("/login");
+     }catch (error) {
+       console.error(error);
+       alert("Signup failed. Please try again.");
+     } finally {
+       setLoading(false); 
+     }
+  };
 
     const checkEmail = (email) => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -120,8 +126,12 @@ function Register() {
                     )}
                 </div>
 
-                <button className="submit-btn" onClick={handleSubmit}>
-                    Signup
+                <button
+                   className="submit-btn"
+                   onClick={handleSubmit}
+                   disabled={loading}
+                >
+                  {loading ? "Signing up..." : "Signup"}
                 </button>
 
                 <p className="login-link" onClick={() => navigate('/login')}>

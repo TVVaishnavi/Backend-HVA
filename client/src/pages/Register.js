@@ -38,6 +38,13 @@ function Register() {
       setEmailIndicator(emailRegex.test(email));
     };
 
+    const passwordRules = {
+       length: password.length >= 8,
+       uppercase: /[A-Z]/.test(password),
+       lowercase: /[a-z]/.test(password),
+       number: /\d/.test(password),
+       special: /[@$!%*?&#]/.test(password),
+    };
 
     return (
         <div className="register-container">
@@ -76,16 +83,24 @@ function Register() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <p className={`password-note ${
-                       password.length === 0
-                          ? "neutral"
-                          : pattern.test(password)
-                          ? "valid"
-                          : "invalid"
-                     }`}>
-                       Password must be at least 8 characters and include uppercase, lowercase,
-                       number, and special character.
-                    </p>
+                    <div className="password-rules">
+                        <p className={passwordRules.length ? "valid" : "invalid"}>
+                           • At least 8 characters
+                        </p>
+                        <p className={passwordRules.uppercase ? "valid" : "invalid"}>
+                           • One uppercase letter
+                        </p>
+                        <p className={passwordRules.lowercase ? "valid" : "invalid"}>
+                           • One lowercase letter
+                        </p>
+                        <p className={passwordRules.number ? "valid" : "invalid"}>
+                           • One number
+                        </p>
+                        <p className={passwordRules.special ? "valid" : "invalid"}>
+                           • One special character
+                        </p>
+                   </div>
+
                 </div>
 
                 <div className="input-group">
@@ -96,7 +111,13 @@ function Register() {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-                    {indicator && <p className="error">Passwords do not match</p>}
+                    {confirmPassword.length > 0 && (
+                              password === confirmPassword ? (
+                                <p className="valid">Passwords match</p>
+                              ) : (
+                                  <p className="invalid">Passwords do not match</p>
+                              )
+                    )}
                 </div>
 
                 <button className="submit-btn" onClick={handleSubmit}>

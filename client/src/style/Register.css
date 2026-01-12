@@ -82,3 +82,16 @@
 .login-link:hover {
     text-decoration: underline;
 }
+
+.password-rules p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}

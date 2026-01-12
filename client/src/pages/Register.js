@@ -75,7 +75,13 @@ function Register() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <p>
+                    <p className={`password-note ${
+                       password.length === 0
+                          ? "neutral"
+                          : pattern.test(password)
+                          ? "valid"
+                          : "invalid"
+                     }`}>
                        Password must be at least 8 characters and include uppercase, lowercase,
                        number, and special character.
                     </p>

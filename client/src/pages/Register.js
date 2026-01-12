@@ -12,6 +12,7 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
     const { signup } = useAuthList();
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
     const handleSubmit = async () => {
         if (!userName || !email || !password || !confirmPassword) {

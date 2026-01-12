@@ -75,6 +75,10 @@ function Register() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    <p>
+                       Password must be at least 8 characters and include uppercase, lowercase,
+                       number, and special character.
+                    </p>
                 </div>
 
                 <div className="input-group">
